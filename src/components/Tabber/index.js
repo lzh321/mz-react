@@ -27,7 +27,7 @@ class Tabbar extends React.Component {
   }
 }
 
-Tabbar.prototypes = {
+Tabbar.propTypes = {
   tabs: PropTypes.array
 }
 
