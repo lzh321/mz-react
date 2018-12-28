@@ -1,51 +1,51 @@
 import React from 'react';
 import 'antd-mobile/dist/antd-mobile.css';
-import { Carousel,  WingBlank } from 'antd-mobile';
+import { Carousel, WingBlank } from 'antd-mobile';
 import './index.scss';
+
 class Banner extends React.Component {
-  state = {
-    data: ['1', '2', '3'],
-    imgHeight: 176
-  }
-  componentDidMount() {
-    // simulate img loading
-    setTimeout(() => {
-      this.setState({
-        data: [
-          'ban1',
-          'ban2',
-          'ban3'
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [
+        {
+          "imgId":1,
+          "img":require("./images/ban1.jpg")
+        },
+        {
+          "imgId":2,
+          "img": require("./images/ban2.jpg")
+        },
+        {
+          "imgId":3,
+          "img": require("./images/ban3.jpg")
+        },
+        {
+          "imgId": 4,
+          "img": require("./images/ban4.jpg")
+        },
+        {
+          "imgId": 5,
+          "img": require("./images/ban5.jpg")
+        }
         ]
-      })
-    }, 100)
+    }
   }
+
   render() {
-    return <WingBlank>
-        <Carousel autoplay={true} infinite={true}>
-          {this.state.data.map(val => (
-            <a
-              key={val}
-              href="http://www.alipay.com"
-              style={{
-                display: 'inline-block',
-                width: '100%',
-                height: this.state.imgHeight
-              }}
-            >
-              <img
-                src={`http://10.36.140.120:3000/images/${val}.jpg`}
-                alt=""
-                style={{ width: '100%', verticalAlign: 'top' }}
-                onLoad={() => {
-                  // fire window resize event to change height
-                  window.dispatchEvent(new Event('resize'))
-                  this.setState({ imgHeight: 'auto' })
-                }}
-              />
-            </a>
+    return (
+      <WingBlank>
+        <Carousel
+          autoplay={true}
+          infinite={true}
+        >
+          {this.state.data.map((item) => (
+            <img key={item.imgId} src={item.img} alt="" />
           ))}
         </Carousel>
       </WingBlank>
+    )
   }
 }
 

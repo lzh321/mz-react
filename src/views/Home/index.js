@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-
+import './index.scss';
 import Tabbar from '../../components/Tabber';
 import Films from './HomeFilms';
 import Cinemas from './HomeCinemas';
@@ -19,7 +19,7 @@ class Home extends React.Component{
   }
   render(){
     return(
-      <div>
+      <div className="home">
         <Switch>
           <Route path="/films" component={Films}></Route>
           <Route path="/cinemas" component={Cinemas}></Route>
